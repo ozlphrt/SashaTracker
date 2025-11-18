@@ -36,18 +36,10 @@ export default function DashboardPage() {
   const weekProgress = Math.round((weekCompletedDays / 7) * 100);
 
   // Calculate average itchiness this week
-  const weekItchScores = currentWeekData?.days.map((d) => d.itchingLevel) || [];
+  const weekItchScores = (currentWeekData?.days.map((d) => d.itchingLevel) || []) as number[];
   const avgItch = weekItchScores.length > 0
-    ? weekItchScores.reduce((a, b) => a + b, 0) / weekItchScores.length
+    ? weekItchScores.reduce((sum, score) => sum + score, 0) / weekItchScores.length
     : 0;
-
-  // Check if today is logged
-  const isTodayLogged = todayEntry && (
-    todayEntry.dietCompliance ||
-    todayEntry.antibioticsTaken ||
-    todayEntry.bathApplied ||
-    todayEntry.earTreatment
-  );
 
   // Check compliance status
   const allTodayTasksDone = todayEntry && 

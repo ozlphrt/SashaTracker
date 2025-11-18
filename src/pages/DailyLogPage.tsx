@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTrackerStore } from '../store/useTrackerStore';
+import { DailyEntry } from '../data/models';
 import AppShell from '../components/layout/AppShell';
 import Card from '../components/common/Card';
 import ToggleRow from '../components/common/ToggleRow';
@@ -43,13 +44,13 @@ export default function DailyLogPage() {
     }
   }
 
-  const [localEntry, setLocalEntry] = useState(entry || {
+  const [localEntry, setLocalEntry] = useState<DailyEntry>(entry || {
     date: todayStr,
     dietCompliance: false,
     antibioticsTaken: false,
     bathApplied: false,
     earTreatment: false,
-    itchingLevel: 0,
+    itchingLevel: 0 as 0 | 1 | 2 | 3 | 4 | 5,
     woundStatus: 'stable' as const,
     notes: '',
     photos: []
@@ -64,15 +65,15 @@ export default function DailyLogPage() {
     }
   }, [entry]);
 
-  const handleUpdate = (changes: Partial<typeof localEntry>) => {
-    const updated = { ...localEntry, ...changes };
+  const handleUpdate = (changes: Partial<DailyEntry>) => {
+    const updated = { ...localEntry, ...changes } as DailyEntry;
     setLocalEntry(updated);
     setIsSaved(false);
     
     // Auto-save after a delay
     setTimeout(() => {
       if (entry) {
-        updateDay(weekIndex, dayIndex, updated);
+        updateDay(weekIndex, dayIndex, changes);
         setIsSaved(true);
       }
     }, 500);

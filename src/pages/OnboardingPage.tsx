@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/common/Card';
 import { DogProfile } from '../data/models';
-import { useTrackerStore } from '../store/useTrackerStore';
 
 export default function OnboardingPage() {
   const navigate = useNavigate();
@@ -31,7 +30,7 @@ export default function OnboardingPage() {
     navigate('/');
   };
 
-  const isComplete = profile.name && profile.breed && profile.weight > 0 && profile.protocolStartDate;
+  const isComplete = profile.name && profile.breed && (profile.weight ?? 0) > 0 && profile.protocolStartDate;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] p-4 pb-24">

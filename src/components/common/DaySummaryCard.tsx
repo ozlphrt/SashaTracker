@@ -2,12 +2,12 @@ import { DailyEntry } from '../../data/models';
 import LedIndicator from './LedIndicator';
 
 interface DaySummaryCardProps {
-  dayIndex: number;
+  dayIndex?: number;
   entry: DailyEntry;
   onClick: () => void;
 }
 
-export default function DaySummaryCard({ dayIndex, entry, onClick }: DaySummaryCardProps) {
+export default function DaySummaryCard({ entry, onClick }: DaySummaryCardProps) {
   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const date = new Date(entry.date);
   const dayName = dayNames[date.getDay()];

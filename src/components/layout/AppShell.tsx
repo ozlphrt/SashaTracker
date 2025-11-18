@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 interface AppShellProps {
   children: ReactNode;
@@ -10,7 +10,6 @@ interface AppShellProps {
 
 export default function AppShell({ children, showNav = true, title, headerAction }: AppShellProps) {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const navItems = [
     { path: '/', label: 'Home', icon: '🏠' },
@@ -19,16 +18,6 @@ export default function AppShell({ children, showNav = true, title, headerAction
     { path: '/insights', label: 'Insights', icon: '📈' },
     { path: '/settings', label: 'More', icon: '⚙️' }
   ];
-
-  const getCurrentDay = () => {
-    const today = new Date();
-    const startDate = new Date('2024-01-01'); // TODO: Get from profile
-    const diffTime = today.getTime() - startDate.getTime();
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const week = Math.floor(diffDays / 7) + 1;
-    const day = (diffDays % 7) + 1;
-    return { week, day };
-  };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
