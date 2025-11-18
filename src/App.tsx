@@ -20,7 +20,7 @@ function App() {
   const showOnboarding = false; // Set to true to show onboarding
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/SashaTracker">
       <Routes>
         {showOnboarding ? (
           <Route path="/" element={<OnboardingPage />} />
