@@ -16,6 +16,7 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const program = useTrackerStore((state) => state.program);
   const isLoading = useTrackerStore((state) => state.isLoading);
+  const isSyncing = useTrackerStore((state) => state.isSyncing);
 
   // Calculate current week and day
   const today = new Date();
@@ -82,7 +83,12 @@ export default function DashboardPage() {
               />
             </div>
             <div className="flex-1">
-              <h2 className="text-xl font-bold">Sasha</h2>
+              <div className="flex items-center gap-2 mb-1">
+                <h2 className="text-xl font-bold">Sasha</h2>
+                <span className="text-xs text-success" title="Cloud sync active">
+                  {isSyncing ? '🔄' : '☁️'}
+                </span>
+              </div>
               <div className="flex items-center gap-2 mt-1">
                 <StatusChip variant={allTodayTasksDone ? 'success' : 'default'}>
                   Week {currentWeek} · Day {currentDay}

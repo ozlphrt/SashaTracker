@@ -17,6 +17,7 @@ Mobile-first PWA for tracking a 12-week Royal Canin Anallergenic elimination die
 - **Trends & Charts**: 12-week visualizations (itch levels, diet compliance, wound status)
 - **Export**: PDF veterinary reports, JSON backup/restore
 - **Offline-First**: PWA with IndexedDB storage, works without internet
+- **Cloud Sync**: Real-time cross-device synchronization via Firebase Firestore (required)
 
 ## Technology Stack
 
@@ -25,6 +26,7 @@ Mobile-first PWA for tracking a 12-week Royal Canin Anallergenic elimination die
 - **State**: Zustand
 - **Routing**: React Router DOM
 - **Database**: Dexie.js (IndexedDB abstraction)
+- **Cloud Sync**: Firebase Firestore (optional)
 - **Charts**: Recharts
 - **Export**: jsPDF + html2canvas
 - **PWA**: vite-plugin-pwa
@@ -38,6 +40,8 @@ src/
   data/          # Models & initial data
   store/         # Zustand state management
   db/            # Dexie database
+  services/      # Sync service (Firebase)
+  config/        # Firebase configuration
   pwa/           # PWA configuration
 ```
 
@@ -50,11 +54,20 @@ src/
 ## Development Status
 
 - [x] Project specification
-- [ ] Documentation setup
-- [ ] Project initialization
-- [ ] Core features implementation
-- [ ] PWA configuration
-- [ ] Testing & deployment
+- [x] Documentation setup
+- [x] Project initialization
+- [x] Core features implementation
+- [x] PWA configuration
+- [x] Cloud sync (Firebase Firestore)
+- [x] Testing & deployment
+
+## Setup Instructions
+
+1. **Local Development**: `npm install && npm run dev`
+2. **Firebase Configuration** (required, one-time): See `FIREBASE_SETUP.md` for Firebase setup
+   - Configure once by developer/deployer
+   - All users automatically connect to the same Firebase project
+3. **Deployment**: Configured for GitHub Pages at `/SashaTracker/`
 
 ---
 
