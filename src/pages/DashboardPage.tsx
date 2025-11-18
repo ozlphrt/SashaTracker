@@ -66,9 +66,13 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
               <img 
-                src="/sasha2.jpg" 
+                src={`${import.meta.env.BASE_URL}sasha2.jpg`}
                 alt="Sasha" 
                 className="w-full h-full object-cover scale-90 translate-y-1"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = `${import.meta.env.BASE_URL}sasha.jpg`;
+                }}
               />
             </div>
             <div className="flex-1">
