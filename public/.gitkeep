@@ -1,0 +1,6 @@
+# PWA Icons Required
+# Add the following icon files:
+# - pwa-192x192.png (192x192 pixels)
+# - pwa-512x512.png (512x512 pixels)
+# These will be used for the PWA manifest.
+
