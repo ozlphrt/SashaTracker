@@ -6,6 +6,12 @@ import StatusChip from '../components/common/StatusChip';
 import ProgressRing from '../components/common/ProgressRing';
 import LedIndicator from '../components/common/LedIndicator';
 
+// Get base URL for images
+const getImagePath = (filename: string) => {
+  const baseUrl = import.meta.env.BASE_URL || '/SashaTracker/';
+  return `${baseUrl}${filename}`;
+};
+
 export default function DashboardPage() {
   const navigate = useNavigate();
   const program = useTrackerStore((state) => state.program);
@@ -66,12 +72,12 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
               <img 
-                src={window.location.hostname === 'ozlphrt.github.io' ? '/SashaTracker/sasha2.jpg' : '/sasha2.jpg'}
+                src={getImagePath('sasha2.jpg')}
                 alt="Sasha" 
                 className="w-full h-full object-cover scale-90 translate-y-1"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = window.location.hostname === 'ozlphrt.github.io' ? '/SashaTracker/sasha.jpg' : '/sasha.jpg';
+                  target.src = getImagePath('sasha.jpg');
                 }}
               />
             </div>
