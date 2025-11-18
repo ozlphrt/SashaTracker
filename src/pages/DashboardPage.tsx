@@ -66,12 +66,12 @@ export default function DashboardPage() {
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
               <img 
-                src={import.meta.env.PROD ? '/SashaTracker/sasha2.jpg' : '/sasha2.jpg'}
+                src={window.location.hostname === 'ozlphrt.github.io' ? '/SashaTracker/sasha2.jpg' : '/sasha2.jpg'}
                 alt="Sasha" 
                 className="w-full h-full object-cover scale-90 translate-y-1"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = import.meta.env.PROD ? '/SashaTracker/sasha.jpg' : '/sasha.jpg';
+                  target.src = window.location.hostname === 'ozlphrt.github.io' ? '/SashaTracker/sasha.jpg' : '/sasha.jpg';
                 }}
               />
             </div>
